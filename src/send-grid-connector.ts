@@ -9,16 +9,17 @@ export class SendGridConnector {
   protected DataAccessObject: IMailer;
 
   constructor(protected settings: any) {
+    const apiKey = settings.apiKey || settings.api_key;
     assert(
       typeof settings === 'object',
       'Cannot create connector without settings object'
     );
     assert(
-      typeof settings.api_key === 'string',
+      typeof apiKey === 'string',
       'Cannot create connector without API key. Please specify api_key'
     );
 
-    SendGridMail.setApiKey(settings.api_key);
+    SendGridMail.setApiKey(apiKey);
     this.mailer = SendGridMail;
     this.DataAccessObject = Mailer;
   }

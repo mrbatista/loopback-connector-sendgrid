@@ -1,6 +1,6 @@
 {
   "name": "@mrbatista/loopback-connector-sendgrid",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Loopback SendGrid Connector",
   "license": "MIT",
   "repository": "https://github.com/mrbatista/loopback-connector-sendgrid.git",
@@ -31,7 +31,9 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "watch": "npm run build -- --watch",
-    "watch:test": "jest --watch"
+    "watch:test": "jest --watch",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@sendgrid/mail": "^6.3.1"
@@ -49,10 +51,15 @@
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
-    "typescript": "^3.1.1"
+    "typescript": "^3.1.1",
+    "travis-deploy-once": "^5.0.9",
+    "semantic-release": "^15.12.3"
   },
   "engines": {
     "node": ">=8"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "jest": {
     "transform": {

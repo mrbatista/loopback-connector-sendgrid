@@ -15,12 +15,14 @@ notifications:
 script:
   - npm run coverage
 
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
-
 after_script:
   - 'cat coverage/lcov.info | ./node_modules/.bin/coveralls'
 
+after_success:
+  - npm run travis-deploy-once "npm run semantic-release"
+
 branches:
+  only:
+    - master
   except:
     - /^v\d+\.\d+\.\d+$/

@@ -1,0 +1,71 @@
+{
+  "name": "@mrbatista/loopback-connector-sendgrid",
+  "version": "0.0.0",
+  "description": "Loopback SendGrid Connector",
+  "license": "MIT",
+  "repository": "https://github.com/mrbatista/loopback-connector-sendgrid.git",
+  "author": {
+    "name": "Matteo Padovano",
+    "email": "mrba7ista@gmail.com",
+    "url": "https://github.com/mrbatista"
+  },
+  "keywords": [
+    "StrongLoop",
+    "LoopBack",
+    "SendGrid",
+    "DataSource",
+    "Connector"
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "clean": "rimraf lib && rimraf coverage",
+    "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
+    "build": "tsc --pretty",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "watch": "npm run build -- --watch",
+    "watch:test": "jest --watch"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^6.3.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.11.4",
+    "@types/sendgrid": "^4.3.0",
+    "coveralls": "^3.0.2",
+    "jest": "^23.6.0",
+    "loopback-datasource-juggler": "^4.4.0",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.3",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "jest": {
+    "transform": {
+      ".(ts)": "ts-jest"
+    },
+    "testPathIgnorePatterns": [
+      ".history"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testEnvironment": "node"
+  }
+}

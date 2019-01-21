@@ -1,25 +1,22 @@
 language: node_js
 
 node_js:
-  - 10
-  - 9
   - 8
+  - 10
 
-cache:
-  directories:
-    - ~/.npm
-
-notifications:
-  email: false
-
-script:
-  - npm run coverage
-
-after_script:
-  - 'cat coverage/lcov.info | ./node_modules/.bin/coveralls'
-
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+jobs:
+  include:
+    - stage: test
+      after_success:
+        - npm run coverage:ci
+    - stage: release
+      node_js: lts/*
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
 
 branches:
   only:
